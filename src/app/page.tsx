@@ -182,16 +182,17 @@ export default function StudyPage() {
           </div>
         </section>
 
-        {/* 왜 인증인가 */}
+        {/* 왜 배우나 */}
         <section className="mx-auto max-w-4xl px-5 py-16">
           <h2 className="text-3xl font-extrabold tracking-tight">
-            인증이 돈이 되는 구조
+            제도가 돈이 되는 구조
           </h2>
           <p className="mt-4 text-lg leading-relaxed text-neutral-700">
-            인증은 액자에 걸어두는 종이가 아니라, 정책자금·입찰·세제로 이어지는
-            문입니다. 그 문이 어디에 있는지 알면 회사의 다음 수가 달라집니다.
+            인증은 액자에 걸어두는 종이가 아니고, 의무고용은 그냥 나가는 돈이
+            아닙니다. 자금·가점·세제·사람으로 이어지는 문이 어디에 있는지 알면
+            회사의 다음 수가 달라집니다.
           </p>
-          <div className="mt-8 grid gap-4 sm:grid-cols-3">
+          <div className="mt-8 grid gap-4 sm:grid-cols-2">
             {study.whyCards.map((c) => (
               <div
                 key={c.title}
@@ -231,8 +232,16 @@ export default function StudyPage() {
                     )}
                   </div>
                   <div className={i < study.curriculum.length - 1 ? "pb-8" : ""}>
-                    <p className="text-sm font-bold text-amber-300">
+                    <p className="flex flex-wrap items-center gap-2 text-sm font-bold text-amber-300">
                       {c.no}회차
+                      <span className="rounded-full bg-white/10 px-2.5 py-0.5 text-xs font-semibold text-white/70">
+                        {c.part}
+                      </span>
+                      {"guest" in c && c.guest && (
+                        <span className="rounded-full bg-amber-400/20 px-2.5 py-0.5 text-xs font-semibold text-amber-200">
+                          초빙
+                        </span>
+                      )}
                     </p>
                     <h3 className="mt-0.5 text-lg font-bold">{c.title}</h3>
                     <p className="mt-1 text-sm leading-relaxed text-white/70">
@@ -242,6 +251,26 @@ export default function StudyPage() {
                 </li>
               ))}
             </ol>
+
+            <div className="mt-10 rounded-2xl border border-white/15 bg-white/5 p-6">
+              <p className="text-sm font-bold tracking-widest text-amber-400">
+                {study.guestTrack.title}
+              </p>
+              <p className="mt-2 break-keep leading-relaxed text-white/80">
+                {study.guestTrack.lead}
+              </p>
+              <ul className="mt-4 grid gap-2 sm:grid-cols-2">
+                {study.guestTrack.topics.map((t) => (
+                  <li
+                    key={t}
+                    className="break-keep rounded-xl bg-white/5 px-4 py-3 text-sm text-white/75"
+                  >
+                    {t}
+                  </li>
+                ))}
+              </ul>
+              <p className="mt-4 text-sm text-white/50">{study.guestTrack.note}</p>
+            </div>
           </div>
         </section>
 
