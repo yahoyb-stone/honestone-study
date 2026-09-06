@@ -325,6 +325,44 @@ export default function StudyPage() {
                 </li>
               ))}
             </ul>
+
+            <div className="mt-10 rounded-2xl border border-white/15 bg-white/5 p-6">
+              <h3 className="text-xl font-bold">{study.rates.title}</h3>
+              <p className="mt-2 break-keep text-sm leading-relaxed text-white/70">
+                {study.rates.lead}
+              </p>
+
+              <div className="mt-5 overflow-x-auto">
+                <table className="w-full min-w-[520px] text-left text-sm">
+                  <thead className="text-xs text-white/45">
+                    <tr>
+                      <th className="pb-2 pr-4 font-medium">일</th>
+                      <th className="pb-2 pr-4 font-medium">시장 범위</th>
+                      <th className="pb-2 font-medium">비고</th>
+                    </tr>
+                  </thead>
+                  <tbody className="divide-y divide-white/10">
+                    {study.rates.rows.map((r) => (
+                      <tr key={r.work}>
+                        <td className="py-2.5 pr-4 font-semibold text-white">
+                          {r.work}
+                        </td>
+                        <td className="py-2.5 pr-4 whitespace-nowrap font-bold text-amber-300">
+                          {r.range}
+                        </td>
+                        <td className="py-2.5 break-keep text-white/60">
+                          {r.note}
+                        </td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+
+              <p className="mt-4 break-keep rounded-xl bg-white/5 px-4 py-3 text-xs leading-relaxed text-white/60">
+                {study.rates.caveat}
+              </p>
+            </div>
           </div>
         </section>
 
