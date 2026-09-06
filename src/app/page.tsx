@@ -247,6 +247,10 @@ export default function StudyPage() {
                     <p className="mt-1 text-sm leading-relaxed text-white/70">
                       {c.body}
                     </p>
+                    <p className="mt-2 break-keep text-sm text-amber-200/90">
+                      <span className="font-semibold text-amber-300">남는 것</span>{" "}
+                      {c.output}
+                    </p>
                   </div>
                 </li>
               ))}
@@ -298,6 +302,70 @@ export default function StudyPage() {
                 <li key={f}>· {f}</li>
               ))}
             </ul>
+          </div>
+        </section>
+
+        {/* 인접 분야 전문가에게 */}
+        <section className="bg-neutral-950 py-16 text-white">
+          <div className="mx-auto max-w-4xl px-5">
+            <h2 className="text-3xl font-extrabold tracking-tight">
+              {study.consultantValue.title}
+            </h2>
+            <p className="mt-4 max-w-3xl break-keep text-lg leading-relaxed text-white/75">
+              {study.consultantValue.lead}
+            </p>
+            <ul className="mt-8 grid gap-3 sm:grid-cols-2">
+              {study.consultantValue.items.map((it) => (
+                <li
+                  key={it}
+                  className="flex gap-3 break-keep rounded-2xl bg-white/5 p-5 text-sm leading-relaxed text-white/80"
+                >
+                  <span className="text-amber-400">✓</span>
+                  <span>{it}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </section>
+
+        {/* 수료 후 · 다루지 않는 것 */}
+        <section className="mx-auto max-w-4xl px-5 py-16">
+          <div className="grid gap-8 sm:grid-cols-2">
+            <div>
+              <h2 className="text-2xl font-extrabold tracking-tight">
+                {study.completion.title}
+              </h2>
+              <ul className="mt-5 space-y-2.5">
+                {study.completion.items.map((it) => (
+                  <li
+                    key={it}
+                    className="flex gap-2.5 break-keep text-sm leading-relaxed text-neutral-700"
+                  >
+                    <span className="text-amber-600">·</span>
+                    <span>{it}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+            <div>
+              <h2 className="text-2xl font-extrabold tracking-tight">
+                다루지 않는 것
+              </h2>
+              <p className="mt-2 text-sm text-neutral-500">
+                못 하는 것을 먼저 밝혀 둡니다.
+              </p>
+              <ul className="mt-4 space-y-2.5">
+                {study.notCovered.map((it) => (
+                  <li
+                    key={it}
+                    className="flex gap-2.5 break-keep text-sm leading-relaxed text-neutral-600"
+                  >
+                    <span className="text-neutral-400">×</span>
+                    <span>{it}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
           </div>
         </section>
 
